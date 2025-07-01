@@ -24,6 +24,14 @@ font-family: "New York", "Georgia", "Times New Roman", serif;  background-color:
   background: #0b0d16;
   overflow: hidden;
 }
+.deployed-link {
+  color: #a855f7; /* A nice purplish tone (Tailwind's purple-500) */
+  text-decoration: none;
+}
+
+.deployed-link:hover {
+  color: #c084fc; /* Lighter purple on hover */
+}
 
 .logo {
   display: flex;
