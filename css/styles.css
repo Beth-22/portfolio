@@ -333,3 +333,21 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* New Slanted Divider for About Section */
+.section-divider {
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to right bottom, #0b0d16 49%, #a093ff 50%, #4ef3c2 100%);
+  opacity: 0.3; /* Subtle blend */
+  margin-bottom: -2px; /* Prevent tiny gaps */
+}
+
+/* Ensure the wavy line takes up space appropriately above footer */
+.wavy-line {
+  display: block;
+  width: 100%;
+  height: 60px;
+  margin-top: 4rem;
+}
