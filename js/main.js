@@ -3,8 +3,9 @@ const navLinks = document.querySelectorAll(".nav-links a");
 
 window.addEventListener("scroll", () => {
   let current = "";
+
   sections.forEach(section => {
-    const sectionTop = section.offsetTop - 100;
+    const sectionTop = section.offsetTop - 80;
     if (pageYOffset >= sectionTop) {
       current = section.getAttribute("id");
     }
