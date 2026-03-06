@@ -20,7 +20,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 2rem;
-  background: transparent; /* allow hero bg to show */
+  background: transparent;
   position: relative;
   z-index: 10;
 }
@@ -99,7 +99,7 @@ body {
 .hero {
   width: 100vw;
   margin-left: calc(-50vw + 50%);
-  height: 90vh; /* stretches to full screen */
+  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -220,36 +220,74 @@ body {
   max-width: 350px;
   margin: 0 auto;
 }
+
+/* Updated Project Image Hover Effect */
 .frame-container {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3; /* keeps container ratio */
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   border-radius: 12px;
   box-shadow: 0 6px 12px rgb(0 0 0 / 0.3);
   background: #111;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1;
+}
+
+/* Scale and Cyan Glow on Hover */
+.project-item:hover .frame-container {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(78, 243, 194, 0.5);
+}
+
+/* Holographic Shimmer Pseudo-element */
+.frame-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(78, 243, 194, 0.3) 25%,
+    rgba(160, 147, 255, 0.3) 50%,
+    rgba(238, 174, 202, 0.3) 75%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 200%;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+}
+
+/* Shimmer Animation Activation */
+.project-item:hover .frame-container::before {
+  opacity: 1;
+  transform: translateY(10px);
+  animation: holo-shimmer 2s infinite linear;
+}
+
+@keyframes holo-shimmer {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 200%; }
 }
 
 .frame-overlay {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* fill and crop edges if needed */
+  object-fit: cover;
   object-position: center;
   display: block;
+  transition: transform 0.5s ease;
 }
 
-.project-screenshot {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  user-select: none;
-  pointer-events: none;
-  transition: transform 0.3s ease;
+.project-item:hover .frame-overlay {
+  transform: scale(1.1);
 }
-.project-item:hover .project-screenshot {
-  transform: scale(1.05);
-}
+
 .project-item h3 {
   margin-top: 0.75rem;
   font-size: 1.1rem;
@@ -342,102 +380,27 @@ footer {
   }
 }
 
-
 /* Prettier Themed Divider */
 .custom-divider {
     width: 100%;
     overflow: hidden;
     line-height: 0;
-    transform: rotate(180deg); /* Flips it to transition into the about section */
+    transform: rotate(180deg);
     margin-top: -1px;
 }
-
 .custom-divider svg {
     position: relative;
     display: block;
-    width: calc(150% + 1.3px); /* Slightly wider to prevent edge gaps */
+    width: calc(150% + 1.3px);
     height: 90px;
 }
-
 .custom-divider .shape-fill {
-    /* Using your theme colors in a soft gradient-like fill */
     fill: #0b0d16;
 }
-
-/* Adding a glow effect to the About section top to blend with the divider */
 .about {
     border-top: 2px solid rgba(160, 147, 255, 0.2);
     box-shadow: 0px -20px 50px -20px rgba(78, 243, 194, 0.15);
     background-color: #0b0d16;
     position: relative;
     z-index: 1;
-}
-
-/* Ensure the container can handle the absolute pseudo-element */
-.project-item {
-  position: relative;
-  text-align: center;
-  max-width: 350px;
-  margin: 0 auto;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-radius: 12px;
-  z-index: 1;
-}
-
-/* 1. Scale and Glowing Box Shadow on Hover */
-.project-item:hover {
-  transform: scale(1.05);
-  /* Classic Cyan/Aqua glow to match your theme */
-  box-shadow: 0 0 25px rgba(78, 243, 194, 0.5);
-}
-
-/* 2. The Holographic Gradient Layer */
-.project-item::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  /* A multi-color holographic gradient */
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(78, 243, 194, 0.3) 25%,
-    rgba(160, 147, 255, 0.3) 50%,
-    rgba(238, 174, 202, 0.3) 75%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  background-size: 200% 200%;
-  border-radius: 14px; /* Slightly larger than the card */
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.4s ease, transform 0.4s ease;
-  pointer-events: none;
-}
-
-/* 3. Reveal and Move Gradient on Hover */
-.project-item:hover::before {
-  opacity: 1;
-  /* Moves the gradient downwards to create the shimmer effect */
-  transform: translateY(10px);
-  animation: holo-shimmer 2s infinite linear;
-}
-
-/* Animation to keep the holographic colors shifting */
-@keyframes holo-shimmer {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 200% 200%; }
-}
-
-/* Smooth transition for the internal image */
-.frame-container {
-  overflow: hidden;
-  border-radius: 12px;
-  background: #111;
-  transition: border 0.3s ease;
-}
-
-.project-item:hover .frame-container {
-  border: 1px solid rgba(78, 243, 194, 0.5);
 }
