@@ -152,7 +152,10 @@ body {
 .about-text {
   flex: 1;
   max-width: 600px;
-  color: black;
+  background-color: #0b0d16; /* Added background */
+  color: #ffffff;           /* Updated for readability */
+  padding: 2rem;            /* Added breathing room */
+  border-radius: 12px;      /* Rounded corners for the container */
   line-height: 1.5;
   text-align: left;
 }
@@ -213,7 +216,7 @@ body {
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 3rem; /* Increased vertical gap between cards */
+  gap: 3rem;
 }
 .project-item {
   text-align: center;
@@ -221,7 +224,7 @@ body {
   margin: 0 auto;
 }
 
-/* Updated Project Image Area with Dark Purple Hover */
+/* Project Image Area */
 .frame-container {
   position: relative;
   width: 100%;
@@ -232,16 +235,12 @@ body {
   background: #111;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   z-index: 1;
-  margin-bottom: 1.5rem; /* Added padding between image and text */
+  margin-bottom: 1.5rem;
 }
-
-/* Scale and Purple Glow */
 .project-item:hover .frame-container {
   transform: scale(1.05);
   box-shadow: 0 0 25px rgba(160, 147, 255, 0.4);
 }
-
-/* Dark Purple Holographic Shimmer */
 .frame-container::before {
   content: "";
   position: absolute;
@@ -249,32 +248,22 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(106, 90, 205, 0.3) 25%,   /* Slate Blue */
-    rgba(160, 147, 255, 0.4) 50%,  /* Your brand purple */
-    rgba(75, 0, 130, 0.3) 75%,     /* Indigo */
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(106, 90, 205, 0.3) 25%, rgba(160, 147, 255, 0.4) 50%, rgba(75, 0, 130, 0.3) 75%, rgba(255, 255, 255, 0) 100%);
   background-size: 200% 200%;
   z-index: 2;
   opacity: 0;
   transition: opacity 0.4s ease, transform 0.4s ease;
   pointer-events: none;
 }
-
 .project-item:hover .frame-container::before {
   opacity: 1;
   transform: translateY(15px);
   animation: holo-shimmer 2.5s infinite linear;
 }
-
 @keyframes holo-shimmer {
   0% { background-position: 0% 0%; }
   100% { background-position: 200% 200%; }
 }
-
 .frame-overlay {
   width: 100%;
   height: 100%;
@@ -283,17 +272,14 @@ body {
   display: block;
   transition: transform 0.5s ease;
 }
-
 .project-item:hover .frame-overlay {
   transform: scale(1.1);
 }
-
 .project-item h3 {
   margin-top: 1rem;
   font-size: 1.1rem;
   font-weight: 600;
 }
-
 .project-description {
   margin-bottom: 0.5rem;
   color: #ccc;
@@ -366,7 +352,6 @@ footer {
     transform: none;
   }
 }
-
 @media (max-width: 600px) {
   .hero h1 {
     font-size: 2.5rem;
@@ -404,7 +389,7 @@ footer {
 }
 .about {
     border-top: 2px solid rgba(160, 147, 255, 0.2);
-    box-shadow: 0px -20px 50px -20px rgba(160, 147, 255, 0.15); /* Updated to purple glow */
+    box-shadow: 0px -20px 50px -20px rgba(160, 147, 255, 0.15);
     background-color: #0b0d16;
     position: relative;
     z-index: 1;
