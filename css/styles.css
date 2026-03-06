@@ -213,7 +213,7 @@ body {
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  gap: 3rem; /* Increased vertical gap between cards */
 }
 .project-item {
   text-align: center;
@@ -221,7 +221,7 @@ body {
   margin: 0 auto;
 }
 
-/* Updated Project Image Hover Effect */
+/* Updated Project Image Area with Dark Purple Hover */
 .frame-container {
   position: relative;
   width: 100%;
@@ -232,15 +232,16 @@ body {
   background: #111;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   z-index: 1;
+  margin-bottom: 1.5rem; /* Added padding between image and text */
 }
 
-/* Scale and Cyan Glow on Hover */
+/* Scale and Purple Glow */
 .project-item:hover .frame-container {
   transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(78, 243, 194, 0.5);
+  box-shadow: 0 0 25px rgba(160, 147, 255, 0.4);
 }
 
-/* Holographic Shimmer Pseudo-element */
+/* Dark Purple Holographic Shimmer */
 .frame-container::before {
   content: "";
   position: absolute;
@@ -251,9 +252,9 @@ body {
   background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0) 0%,
-    rgba(78, 243, 194, 0.3) 25%,
-    rgba(160, 147, 255, 0.3) 50%,
-    rgba(238, 174, 202, 0.3) 75%,
+    rgba(106, 90, 205, 0.3) 25%,   /* Slate Blue */
+    rgba(160, 147, 255, 0.4) 50%,  /* Your brand purple */
+    rgba(75, 0, 130, 0.3) 75%,     /* Indigo */
     rgba(255, 255, 255, 0) 100%
   );
   background-size: 200% 200%;
@@ -263,11 +264,10 @@ body {
   pointer-events: none;
 }
 
-/* Shimmer Animation Activation */
 .project-item:hover .frame-container::before {
   opacity: 1;
-  transform: translateY(10px);
-  animation: holo-shimmer 2s infinite linear;
+  transform: translateY(15px);
+  animation: holo-shimmer 2.5s infinite linear;
 }
 
 @keyframes holo-shimmer {
@@ -289,9 +289,14 @@ body {
 }
 
 .project-item h3 {
-  margin-top: 0.75rem;
+  margin-top: 1rem;
   font-size: 1.1rem;
   font-weight: 600;
+}
+
+.project-description {
+  margin-bottom: 0.5rem;
+  color: #ccc;
 }
 
 /* Contact */
@@ -380,7 +385,7 @@ footer {
   }
 }
 
-/* Prettier Themed Divider */
+/* Divider & Glow Section */
 .custom-divider {
     width: 100%;
     overflow: hidden;
@@ -399,7 +404,7 @@ footer {
 }
 .about {
     border-top: 2px solid rgba(160, 147, 255, 0.2);
-    box-shadow: 0px -20px 50px -20px rgba(78, 243, 194, 0.15);
+    box-shadow: 0px -20px 50px -20px rgba(160, 147, 255, 0.15); /* Updated to purple glow */
     background-color: #0b0d16;
     position: relative;
     z-index: 1;
