@@ -190,18 +190,27 @@ body {
   z-index: 1;
 }
 
+/* About Section - Zoomed Background */
 .about-content {
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   background-image: url("../assests/images/10009.svg");
-  background-size: cover; /* This makes the SVG stretch to cover the area */
-  background-position: center;
+  
+  /* Zoom effect: 150% makes it larger than the container, 
+     effectively 'zooming in' on the center of the image */
+  background-size: 150% auto; 
+  
+  /* Keeps the focus on the center of the zoomed image */
+  background-position: center; 
+  
   background-repeat: no-repeat;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 8rem 2rem; /* Increased vertical padding to stretch the section */
+  
+  /* Keep your vertical padding high to give it space */
+  padding: 8rem 2rem; 
   gap: 5rem;
 }
 
