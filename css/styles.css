@@ -59,7 +59,6 @@ body {
 }
 .nav-links a:hover { opacity: 0.7; }
 
-/* Nav underline assets */
 .nav-links::after {
   content: "";
   position: absolute;
@@ -112,14 +111,13 @@ body {
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 4rem; /* Spacing between project cards */
+  gap: 4rem;
 }
 .project-item {
   max-width: 350px;
   margin: 0 auto;
 }
 
-/* Holographic Image Container (The part you wanted stretched/purple) */
 .frame-container {
   position: relative;
   width: 100%;
@@ -129,16 +127,14 @@ body {
   background: #111;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   z-index: 1;
-  margin-bottom: 1.5rem; /* Padding between image and text */
+  margin-bottom: 1.5rem;
 }
 
-/* Hover Scale & Purple Glow */
 .project-item:hover .frame-container {
   transform: scale(1.05);
   box-shadow: 0 0 25px rgba(160, 147, 255, 0.5);
 }
 
-/* Holographic Shimmer Pseudo-element */
 .frame-container::before {
   content: "";
   position: absolute;
@@ -179,11 +175,26 @@ body {
 }
 
 .project-item:hover .frame-overlay { transform: scale(1.1); }
-
 .project-description { color: #ccc; font-size: 0.95rem; margin-bottom: 0.5rem; }
 .deployed-link, .github-icon { color: #a093ff; text-decoration: none; font-size: 1.2rem; }
 
-/* About Section - Stretching the BKG here */
+/* Separator */
+.custom-divider {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+  margin-top: -1px;
+}
+.custom-divider svg {
+  position: relative;
+  display: block;
+  width: calc(150% + 1.3px);
+  height: 90px;
+}
+.custom-divider .shape-fill { fill: #0b0d16; }
+
+/* About Section */
 .about {
   background-color: #0b0d16;
   position: relative;
@@ -193,23 +204,17 @@ body {
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   background-image: url("../assests/images/10009.svg");
-  background-size: cover; /* This makes the SVG stretch to cover the area */
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 8rem 2rem; /* Increased vertical padding to stretch the section */
+  padding: 8rem 2rem;
   gap: 5rem;
 }
 
-.about-text {
-  flex: 1;
-  max-width: 600px;
-  color: black; /* Based on your existing style where text is over a light SVG part */
-  text-align: left;
-}
 .about-text {
   flex: 1;
   max-width: 600px;
@@ -254,10 +259,6 @@ body {
 footer { text-align: center; padding: 2rem; color: #666; }
 .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1rem; }
 .footer-links a { text-decoration: none; background: linear-gradient(90deg, #4ef3c2, #a093ff, #eeaeca); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-/* Divider */
-.custom-divider { width: 100%; overflow: hidden; line-height: 0; transform: rotate(180deg); }
-.custom-divider .shape-fill { fill: #0b0d16; }
 
 /* Responsive */
 @media (max-width: 900px) {
