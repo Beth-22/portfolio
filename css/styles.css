@@ -1,139 +1,67 @@
-/* Reset and basics */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-html {
-  scroll-behavior: smooth;
-}
-body {
-  font-family: serif;
-  background-color: #0b0d16;
-  color: white;
-  line-height: 1.6;
-}
+/* --- Reset and Basics --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: serif; background-color: #0b0d16; color: white; line-height: 1.6; }
 
-/* Header */
-.dark-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 2rem;
-  background: transparent;
-  position: relative;
-  z-index: 10;
-}
-.logo-text {
-  font-size: 1.8rem;
-  font-weight: bold;
-  background: linear-gradient(90deg, #4ef3c2, #a093ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-}
-.nav-links a {
-  text-decoration: none;
-  background: linear-gradient(90deg, #4ef3c2, #a093ff, #eeaeca);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transition: opacity 0.3s ease;
-}
+/* --- Header --- */
+.dark-header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; position: relative; z-index: 10; }
+.logo-text { font-size: 1.8rem; font-weight: bold; background: linear-gradient(90deg, #4ef3c2, #a093ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.nav-links { display: flex; align-items: center; gap: 1.2rem; }
+.nav-links a { text-decoration: none; background: linear-gradient(90deg, #4ef3c2, #a093ff, #eeaeca); -webkit-background-clip: text; -webkit-text-fill-color: transparent; transition: opacity 0.3s ease; }
 .nav-links a:hover { opacity: 0.7; }
 
-/* Hero Section with Glassmorphism and Shimmer */
-.hero {
-  width: 100vw;
-  height: 90vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url("../assests/images/landing10.png");
-  background-size: cover;
-  background-position: center;
-  position: relative;
+/* --- Hero Section --- */
+.hero { width: 100vw; height: 90vh; display: flex; justify-content: center; align-items: center; background-image: url("../assests/images/landing10.png"); background-size: cover; background-position: center; text-align: center; }
+.name { background: linear-gradient(90deg, #4ef3c2, #a093ff, #eeaeca); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 4rem; }
+.hero h1 { font-size: 3rem; }
+
+/* --- Tagline with Glassmorphism and One-Time Sparkle --- */
+.shimmer-container {
+    display: inline-block;
+    padding: 0.5rem 2rem;
+    margin-top: 1.5rem;
+    background: rgba(255, 255, 255, 0.1); /* Frosted glass base */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    position: relative;
+    overflow: hidden; /* Clips the sparkle animation */
 }
 
-.glass-container {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 24px;
-  padding: 3rem 4rem;
-  text-align: center;
-  position: relative;
-  overflow: hidden; /* Contains the shine animation */
-}
+.shimmer-container p { font-size: 1.5rem; color: #fff; margin: 0; }
 
-/* Diagonal Sparkle/Shimmer Effect */
-.glass-container::before {
-  content: "";
-  position: absolute;
-  top: -100%;
-  left: -100%;
-  width: 50%;
-  height: 300%;
-  background: linear-gradient(60deg, transparent 20%, rgba(255, 255, 255, 0.3) 50%, transparent 80%);
-  transform: rotate(30deg);
-  animation: cartoon-sparkle 5s infinite linear;
-  pointer-events: none;
+.shimmer-container::before {
+    content: "";
+    position: absolute;
+    top: -150%;
+    left: -150%;
+    width: 50%;
+    height: 400%;
+    background: linear-gradient(60deg, transparent 20%, rgba(255, 255, 255, 0.5) 50%, transparent 80%);
+    transform: rotate(30deg);
+    animation: cartoon-sparkle 1.5s ease-out 1; /* Runs once, then stops */
+    pointer-events: none;
 }
 
 @keyframes cartoon-sparkle {
-  0% { left: -100%; }
-  100% { left: 150%; }
+    0% { left: -150%; }
+    100% { left: 150%; }
 }
 
-.name {
-  background: linear-gradient(90deg, #4ef3c2, #a093ff, #eeaeca);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 4rem;
-}
-.hero h1 { font-size: 3rem; }
-.hero p { font-size: 2rem; color: #fff; margin-top: 1rem; }
-
-/* Projects Grid */
+/* --- Projects Grid --- */
 .projects { max-width: 1200px; margin: 4rem auto; padding: 0 1rem; text-align: center; }
 .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3rem; }
-.frame-container {
-  position: relative;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  border-radius: 12px;
-  background: #111;
-  transition: transform 0.3s ease;
-}
+.frame-container { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 12px; background: #111; transition: transform 0.3s ease; }
 .frame-overlay { width: 100%; height: 100%; object-fit: cover; }
 .project-item:hover .frame-container { transform: scale(1.05); }
 
-/* About Section */
-.about-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 4rem;
-  gap: 3rem;
-  background-color: #0b0d16;
-}
-.about-text {
-  max-width: 600px;
-  background-color: #1a1d2e;
-  padding: 2rem;
-  border-radius: 12px;
-}
-
-/* Footer & Utilities */
-.contact { margin: 4rem; }
+/* --- About & Footer --- */
+.about-content { display: flex; justify-content: center; align-items: center; padding: 4rem; gap: 3rem; background-color: #0b0d16; }
+.about-text { max-width: 600px; background-color: #1a1d2e; padding: 2rem; border-radius: 12px; }
+.contact { margin: 4rem; text-align: center; }
 footer { text-align: center; padding: 2rem; color: #666; }
 .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1rem; }
 .footer-links a { color: #a093ff; text-decoration: none; }
 
-@media (max-width: 900px) {
-  .about-content { flex-direction: column; }
-}
+@media (max-width: 900px) { .about-content { flex-direction: column; } }
