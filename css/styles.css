@@ -191,13 +191,10 @@ body {
 }
 .about-content {
   width: 100vw;
-  margin-left: calc(-50vw + 50%);
+  margin-left: calc(150vw + 50%);
   color: white;
   background-image: url("../assests/images/10009.svg");
   
-  /* 150% width stretches it horizontally, 
-     100% height keeps it from getting taller 
-  */
   background-size: 250% 100%; 
   
   background-position: center;
